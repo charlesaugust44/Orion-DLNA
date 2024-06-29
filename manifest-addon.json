@@ -1,0 +1,15 @@
+{
+    "id": "org.charlesaugust44.dlnastream",
+    "version": "1.0.0",
+    "name": "DLNA Streamer",
+    "description": "Streams files from a local DLNA server",
+    "logo": "https://www.stremio.com/website/stremio-logo-small.png",
+    "resources": [
+        "stream"
+    ],
+    "types": [
+        "movie",
+        "series"
+    ],
+    "catalogs": []
+}
