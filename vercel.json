@@ -1,16 +1,17 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/index.js"
+      "src": "/stream/(series|movies)/([a-zA-Z0-9%]+)\\.json$",
+      "dest": "/api/stream.js"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/api/manifest.js"
+    },
+    {
+      "src": "/dlna",
+      "dest": "/api/dlna.js"
     }
   ]
 }
-
