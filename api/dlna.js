@@ -1,5 +1,6 @@
 import {sql} from "@vercel/postgres";
 import {promises as fs} from 'fs';
+import path from "path";
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Credentials', true)
@@ -10,7 +11,8 @@ export default async function handler(req, res) {
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
 
-  const data = await fs.readFile('./config.json', 'utf8');
+  const configPath = path.join(process.cwd(), 'config.json');
+  const data = await fs.readFile(configPath, 'utf8');
   const config = JSON.parse(data);
 
   if (req.headers['x-orion-api-key'] !== config.api_key) {
