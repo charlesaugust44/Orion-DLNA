@@ -10,10 +10,10 @@ export default async function handler(req, res) {
     'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   )
 
-  const data = await fs.readFile('config.json', 'utf8');
+  const data = await fs.readFile('./config.json', 'utf8');
   const config = JSON.parse(data);
 
-  if (req.headers['x-orion-api-key'] !== config['api-key']) {
+  if (req.headers['x-orion-api-key'] !== config.api_key) {
     res.status(401).send("Unauthorized");
     return;
   }
@@ -21,8 +21,18 @@ export default async function handler(req, res) {
   try {
     const body = req.body;
 
-    await sql`INSERT INTO dlna(name, filename, url, imdb_id)
-              VALUES (${body.name}, ${body.filename}, ${body.url}, ${body.imdb_id})`;
+    if (!Array.isArray(body)) {
+      res.status(400).send("Invalid input, expected an array of objects");
+      return;
+    }
+
+    await sql`DELETE FROM dlna`;
+
+    for (const item of body) {
+      await sql`INSERT INTO dlna(title, filename, url, imdb_id, season, episode)
+                VALUES (${item.title}, ${item.filename}, ${item.url}, ${item.imdb_id}, ${item.season}, ${item.episode})`;
+    }
+
     res.status(200).send();
   } catch (error) {
     res.status(500).send(error.message);
