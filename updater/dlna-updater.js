@@ -26,13 +26,13 @@ const torrentTerms = ['720p', '1080p', 'bluray', 'full hd', '5 1', 'x256', 'x265
 const torrentFilter = new RegExp(torrentTerms.join("|"), "gi");
 
 async function loadConfig() {
-    const data = await fs.readFile('config.json', 'utf8');
+    const data = await fs.readFile('../config.json', 'utf8');
     return JSON.parse(data);
 }
 
 async function saveConfig(config) {
     const data = JSON.stringify(config, null, 4);
-    await fs.writeFile('config.json', data, 'utf8');
+    await fs.writeFile('../config.json', data, 'utf8');
 }
 
 async function tmdbSearch(query, type) {
