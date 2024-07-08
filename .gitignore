@@ -2,4 +2,3 @@
 .vercel
 node_modules
 config.json
-updater/node_modules
