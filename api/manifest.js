@@ -12,14 +12,26 @@ export default async function handler(req, res) {
     "version": "1.0.0",
     "name": "DLNA Streamer",
     "description": "Streams files from a local DLNA server",
-    "logo": "https://www.stremio.com/website/stremio-logo-small.png",
+    "logo": "https://orion-dlna.vercel.app/images/orion.png",
     "resources": [
-      "stream"
+      "stream",
+      "catalog"
     ],
     "types": [
       "movie",
       "series"
     ],
-    "catalogs": []
+    "catalogs": [
+      {
+        "type": "movie",
+        "id": "orionmovie",
+        "name": "Orion Movies"
+      },
+      {
+        "type": "series",
+        "id": "orionseries",
+        "name": "Orion Series"
+      }
+    ]
   });
 };

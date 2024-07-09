@@ -2,11 +2,6 @@
   "name": "orion-dlna",
   "version": "0.1.0",
   "description": "Local DLNA Addon for Stremio",
-  "scripts": {
-    "deploy": "vercel --prod",
-    "dev": "vercel dev",
-    "stage": "vercel"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",

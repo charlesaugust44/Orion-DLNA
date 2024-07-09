@@ -1,6 +1,6 @@
 import {parse} from 'url';
 import {sql} from "@vercel/postgres";
-//TODO: Add catalogue support, change icon and banner
+
 /**
  * @param {IncomingMessage} req
  * @param res
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
     const episode = parseInt(decodedId.split(':')[2]) ?? null;
 
     let result = null;
-console.log(match);
+
     if (type === 'movie') {
         result = await sql`SELECT title, url, filename
                                  FROM dlna

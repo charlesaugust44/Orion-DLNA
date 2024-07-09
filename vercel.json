@@ -12,6 +12,10 @@
     {
       "src": "/dlna",
       "dest": "/api/dlna.js"
+    },
+    {
+      "src": "/catalog/(series|movie)/([a-zA-Z0-9%]+)\\.json",
+      "dest": "/api/catalog.js"
     }
   ]
 }
